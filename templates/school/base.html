@@ -42,8 +42,13 @@
                     <div class="col-md-6 pull-left nodisplay">R-School</div>
                     <div class="col-md-6 pull-right text-right">
                         <ul class="top-right-list">
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-                            <li><a href="register.html"><i class="fa fa-user"></i> Register</a>
+                            {% if user.is_authenticated %}
+                                <li><a href="{% url 'logout' %}" class="btn btn-info"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{% url 'register' %}"><i class="fa fa-user"></i> Register</a>
+                            {% endif %}
+
                         </ul>
                     </div>
                 </div>
@@ -115,28 +120,6 @@
         </div>
         <!--end menu-->
     </div>
-    <div class="clearfix"></div>
-    <div class="header-style1">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 text-center animate-in" data-anim-type="zoom-in"
-                     data-anim-delay="100">
-                    <div class="display-t">
-                        <div class="display-tc">
-                            <h1>The Best Professional e-Learning Courses For better World!</h1>
-                            <h2>1500+ Centers Across the World</h2>
-                            <p><a class="btn btn-primary btn-lg popup-vimeo btn-video"
-                                  href="https://www.youtube.com/watch?v=05qZyoznfwk"><i class="fa fa-play-circle"></i>
-                                Watch Video</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end banner-->
-    <div class="clearfix"></div>
     {% block content %}
     
     {% endblock %}
